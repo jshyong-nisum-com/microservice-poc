@@ -4,7 +4,9 @@
 
 @main("Registration") {
     
-    <h1>@registrations.size() task(s)</h1>
+    <h1>Registration POC</h1>
+
+    <h3>@registrations.size() registration(s)</h3>
     
     <table border="1">
         <tr>
@@ -28,6 +30,7 @@
         }
     </table>
     
+    <br/>
     <h2>Add a new registration</h2>
     
     @form(routes.Application.newRegistration()) {
@@ -56,7 +59,7 @@
             'placeholder -> "Enter phone number..."
         )  
         
-        <input type="submit" value="Register">
+        <input type="submit" value="Register Now">
         
     }
     
