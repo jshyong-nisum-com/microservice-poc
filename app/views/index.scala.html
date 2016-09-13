@@ -1,0 +1,34 @@
+@(registrations: List[Registration], registrationForm: Form[Registration])
+
+@import helper._
+
+@main("Registration") {
+    
+    <h1>@registrations.size() task(s)</h1>
+    
+    <ul>
+        @for(registration <- registrations) {
+            <li>
+                @registration.firstName @registration.lastName  @registration.email  @registration.phone 
+                
+                @form(routes.Application.deleteRegistration(registration.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Add a new registration</h2>
+    
+    @form(routes.Application.newRegistration()) {
+        
+        @inputText(registrationForm("FirstName"))  
+        @inputText(registrationForm("lastName")) 
+        @inputText(registrationForm("email")) 
+        @inputText(registrationForm("phone")) 
+        
+        <input type="submit" value="Register">
+        
+    }
+    
+}
