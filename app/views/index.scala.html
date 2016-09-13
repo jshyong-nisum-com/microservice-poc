@@ -6,26 +6,55 @@
     
     <h1>@registrations.size() task(s)</h1>
     
-    <ul>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th> </th>
+        </tr>
         @for(registration <- registrations) {
-            <li>
-                @registration.firstName @registration.lastName  @registration.email  @registration.phone 
+            <tr>
+                <td> @registration.firstName @registration.lastName </td>               
+                <td> @registration.email </td>  
+                <td> @registration.phone </td>  
                 
+                <td> 
                 @form(routes.Application.deleteRegistration(registration.id)) {
                     <input type="submit" value="Delete">
                 }
-            </li>
+                </td> 
+            </tr>
         }
-    </ul>
+    </table>
     
     <h2>Add a new registration</h2>
     
     @form(routes.Application.newRegistration()) {
         
-        @inputText(registrationForm("FirstName"))  
-        @inputText(registrationForm("lastName")) 
-        @inputText(registrationForm("email")) 
-        @inputText(registrationForm("phone")) 
+        @inputText(registrationForm("firstName"), 
+            'size -> 50,
+            '_label -> "First Name",
+            'placeholder -> "Enter first name..."
+        )  
+        
+        @inputText(registrationForm("lastName"),
+            'size -> 50,
+            '_label -> "Last Name",
+            'placeholder -> "Enter last name..."
+        )  
+        
+        @inputText(registrationForm("email"), 
+            'size -> 35,
+            '_label -> "Email",
+            'placeholder -> "Enter email..."
+        )  
+        
+        @inputText(registrationForm("phone"),
+            'size -> 25,
+            '_label -> "Phone Number",
+            'placeholder -> "Enter phone number..."
+        )  
         
         <input type="submit" value="Register">
         
