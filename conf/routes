@@ -10,5 +10,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Registrations          
 GET     /registrations                  controllers.Application.registrations()
-POST    /registrations                  controllers.Application.newRegistration()
+POST    /registrations                  controllers.Application.saveRegistration()
 POST    /registrations/:id/delete       controllers.Application.deleteRegistration(id: Long)
+GET    /registrations/:id/update        controllers.Application.updateRegistration(id: Long)

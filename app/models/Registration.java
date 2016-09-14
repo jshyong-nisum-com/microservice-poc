@@ -17,7 +17,7 @@ public class Registration extends Model {
 	public Long id;
 
 	@Required
-	public String firstName;
+	private String firstName;
 
 	@Required
 	public String lastName;
@@ -32,12 +32,24 @@ public class Registration extends Model {
 		return find.all();
 	}
 
-	public static void create(Registration registration) {
-		registration.save();
+	public static void save(Registration registration) {
+		if (registration.id != null) {
+			registration.update();
+		} else {
+			registration.save();
+		}
 	}
 
 	public static void delete(Long id) {
 		find.ref(id).delete();
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 }

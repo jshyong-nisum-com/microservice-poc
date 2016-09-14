@@ -10,20 +10,29 @@
     
     <table border="1">
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
             <th> </th>
+            <th> </th>
         </tr>
         @for(registration <- registrations) {
             <tr>
-                <td> @registration.firstName @registration.lastName </td>               
+                <td> @registration.id </td>  
+                <td> @registration.getFirstName() @registration.lastName </td>               
                 <td> @registration.email </td>  
                 <td> @registration.phone </td>  
                 
                 <td> 
+                @form(routes.Application.updateRegistration(registration.id)) {
+                    <input type="submit" value="<Update>">
+                }
+                </td> 
+
+                <td> 
                 @form(routes.Application.deleteRegistration(registration.id)) {
-                    <input type="submit" value="Delete">
+                    <input type="submit" value="<Delete>">
                 }
                 </td> 
             </tr>
@@ -31,9 +40,10 @@
     </table>
     
     <br/>
-    <h2>Add a new registration</h2>
+    <h2>Add / Update a registration</h2>
     
-    @form(routes.Application.newRegistration()) {
+    @form(routes.Application.saveRegistration()) {      
+        <input type="hidden" id="id" name="id" value="@registrationForm.data.get("id")" />
         
         @inputText(registrationForm("firstName"), 
             'size -> 50,
@@ -59,7 +69,7 @@
             'placeholder -> "Enter phone number..."
         )  
         
-        <input type="submit" value="Register Now">
+        <input type="submit" value="Register">
         
     }
     
