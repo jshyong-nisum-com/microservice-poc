@@ -1,4 +1,4 @@
-name := "todolist"
+name := "microservice-poc"
 
 version := "1.0-SNAPSHOT"
 

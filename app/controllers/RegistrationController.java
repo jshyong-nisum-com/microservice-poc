@@ -8,12 +8,12 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-public class Application extends Controller {
+public class RegistrationController extends Controller {
 
 	static Form<Registration> registrationForm = Form.form(Registration.class);
 
 	public static Result index() {
-		return redirect(routes.Application.registrations());
+		return redirect(routes.RegistrationController.registrations());
 	}
 
 	public static Result registrations() {
@@ -29,7 +29,7 @@ public class Application extends Controller {
 		editForm = editForm.fill(registration);
 		
 		Map<String, String> data = editForm.data();
-		data.put("id", String.valueOf(registration.id));
+		data.put("id", String.valueOf(registration.getId()));
 		return ok(views.html.index.render(registrations, editForm));
 	}
 
@@ -41,18 +41,18 @@ public class Application extends Controller {
 
 		Registration registration = filledForm.get();
 		Registration.save(registration);
-		return redirect(routes.Application.registrations());
+		return redirect(routes.RegistrationController.registrations());
 	}
 
 	public static Result deleteRegistration(Long id) {
 		Registration.delete(id);
-		return redirect(routes.Application.registrations());
+		return redirect(routes.RegistrationController.registrations());
 	}
 
 	private static Registration getRegistrationById(List<Registration> registrations, Long id) {
 		if (!registrations.isEmpty()) {
 			for (Registration registration : registrations) {
-				if (registration.id == id) {
+				if (registration.getId() == id) {
 					return registration;
 				}
 			}

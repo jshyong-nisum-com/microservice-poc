@@ -19,19 +19,19 @@
         </tr>
         @for(registration <- registrations) {
             <tr>
-                <td> @registration.id </td>  
-                <td> @registration.getFirstName() @registration.lastName </td>               
-                <td> @registration.email </td>  
-                <td> @registration.phone </td>  
+                <td> @registration.getId() </td>  
+                <td> @registration.getFirstName() @registration.getLastName() </td>               
+                <td> @registration.getEmail() </td>  
+                <td> @registration.getPhone() </td>  
                 
                 <td> 
-                @form(routes.Application.updateRegistration(registration.id)) {
+                @form(routes.RegistrationController.updateRegistration(registration.getId())) {
                     <input type="submit" value="<Update>">
                 }
                 </td> 
 
                 <td> 
-                @form(routes.Application.deleteRegistration(registration.id)) {
+                @form(routes.RegistrationController.deleteRegistration(registration.getId())) {
                     <input type="submit" value="<Delete>">
                 }
                 </td> 
@@ -42,7 +42,7 @@
     <br/>
     <h2>Add / Update a registration</h2>
     
-    @form(routes.Application.saveRegistration()) {      
+    @form(routes.RegistrationController.saveRegistration()) {      
         <input type="hidden" id="id" name="id" value="@registrationForm.data.get("id")" />
         
         @inputText(registrationForm("firstName"), 
@@ -69,8 +69,14 @@
             'placeholder -> "Enter phone number..."
         )  
         
-        <input type="submit" value="Register">
-        
+        <input type="submit" value="Register">        
+        <input type="button" value="Clear" onclick="clearForm()">      
     }
     
+    <script>
+        function clearForm() {
+            window.location.assign("/registrations")
+        }
+    </script>
+
 }

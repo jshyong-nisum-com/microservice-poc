@@ -14,26 +14,26 @@ public class Registration extends Model {
 	public static Finder<Long, Registration> find = new Finder(Long.class, Registration.class);
 
 	@Id
-	public Long id;
+	private Long id;
 
 	@Required
 	private String firstName;
 
 	@Required
-	public String lastName;
+	private String lastName;
 
 	@Required
-	public String email;
+	private String email;
 
 	@Required
-	public String phone;
+	private String phone;
 
 	public static List<Registration> all() {
 		return find.all();
 	}
 
 	public static void save(Registration registration) {
-		if (registration.id != null) {
+		if (registration.getId() != null) {
 			registration.update();
 		} else {
 			registration.save();
@@ -50,6 +50,38 @@ public class Registration extends Model {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 }

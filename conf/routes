@@ -3,13 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           controllers.RegistrationController.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Registrations          
-GET     /registrations                  controllers.Application.registrations()
-POST    /registrations                  controllers.Application.saveRegistration()
-POST    /registrations/:id/delete       controllers.Application.deleteRegistration(id: Long)
-GET    /registrations/:id/update        controllers.Application.updateRegistration(id: Long)
+GET     /registrations                  controllers.RegistrationController.registrations()
+POST    /registrations                  controllers.RegistrationController.saveRegistration()
+POST    /registrations/:id/delete       controllers.RegistrationController.deleteRegistration(id: Long)
+GET     /registrations/:id/update       controllers.RegistrationController.updateRegistration(id: Long)
