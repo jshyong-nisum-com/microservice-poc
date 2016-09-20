@@ -32,6 +32,10 @@ public class Registration extends Model {
 		return find.all();
 	}
 
+	public static Registration byId(Long id) {
+		return find.byId(id);
+	}
+
 	public static void save(Registration registration) {
 		if (registration.getId() != null) {
 			registration.update();
