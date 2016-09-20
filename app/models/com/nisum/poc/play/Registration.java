@@ -1,4 +1,4 @@
-package models;
+package models.com.nisum.poc.play;
 
 import java.util.List;
 
