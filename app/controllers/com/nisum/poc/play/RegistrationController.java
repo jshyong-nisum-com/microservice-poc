@@ -6,7 +6,7 @@ import models.com.nisum.poc.play.Registration;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import servics.com.nisum.poc.play.RegistrationService;
+import services.com.nisum.poc.play.RegistrationService;
 import views.html.index;
 
 public class RegistrationController extends Controller {

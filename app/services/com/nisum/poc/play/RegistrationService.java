@@ -1,4 +1,4 @@
-package servics.com.nisum.poc.play;
+package services.com.nisum.poc.play;
 
 import java.util.List;
 
