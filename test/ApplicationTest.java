@@ -1,22 +1,14 @@
+import static org.fest.assertions.Assertions.assertThat;
+import static play.test.Helpers.contentAsString;
+import static play.test.Helpers.contentType;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.*;
+import org.junit.Test;
 
-import play.mvc.*;
-import play.test.*;
-import play.data.DynamicForm;
-import play.data.validation.ValidationError;
-import play.data.validation.Constraints.RequiredValidator;
-import play.i18n.Lang;
-import play.libs.F;
-import play.libs.F.*;
-
-import static play.test.Helpers.*;
-import static org.fest.assertions.Assertions.*;
+import models.com.nisum.poc.play.Registration;
+import play.data.Form;
+import play.mvc.Content;
 
 
 /**
@@ -35,10 +27,11 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.");
+//        Content html = views.html.index.render("Your new application is ready.");
+    	Form<Registration> registrationForm = Form.form(Registration.class);
+        Content html = views.html.index.render(new ArrayList<Registration>(), registrationForm);
         assertThat(contentType(html)).isEqualTo("text/html");
-        assertThat(contentAsString(html)).contains("Your new application is ready.");
+//        assertThat(contentAsString(html)).contains("Your new application is ready.");
     }
-
 
 }

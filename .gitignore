@@ -16,3 +16,4 @@ dist
 /.metadata
 /.recommenders
 /.DS_Store
+/.target
